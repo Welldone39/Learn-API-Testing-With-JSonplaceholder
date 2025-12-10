@@ -60,7 +60,7 @@ Pengujian meliputi:
 
 ---
 
-### 🔹 3. Todoist API (Optional)
+### 🔹 3. Todoist API 
 Digunakan untuk latihan API dengan autentikasi token:
 - Membuat task  
 - Mendapatkan daftar task  
