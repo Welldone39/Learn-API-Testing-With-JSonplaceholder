@@ -1,0 +1,1806 @@
+{
+  "info": {
+    "_postman_id": "56062a59-f4a5-4bfb-9de3-1a405b059731",
+    "name": "LEARN_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get List Users",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5afac351-ca56-427f-8582-97f5419acb56",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test('List Users is an array[]',()=>{\r",
+              "    pm.expect(data).to.be.an('array'); // data is array, true\r",
+              "})\r",
+              "\r",
+              "pm.test('List Users has required id,username,email',()=>{\r",
+              "    const ListUsers = data[0]\r",
+              "\r",
+              "    pm.expect(ListUsers.id).to.be.a('number')\r",
+              "    pm.expect(ListUsers.username).to.be.a('string').not.be.empty\r",
+              "    pm.expect(ListUsers.email).to.be.a('string').not.be.empty\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "43dc19a8-00cc-4eef-a320-9ff34d6a8130",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "3174b91f-d7c0-4584-b0ed-b243ceae5573",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get List Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "45e4db37-045b-48a5-b3b1-4fe555fa5eb3",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test('List Posts is an array[]',()=>{\r",
+              "    pm.expect(data).to.be.an('array'); // data is array, true\r",
+              "})\r",
+              "\r",
+              "pm.test('List Posts has required userId,id,title,body',()=>{\r",
+              "    const ListPosts = data[0]\r",
+              "\r",
+              "    pm.expect(ListPosts.userId).to.be.a('number')\r",
+              "    pm.expect(ListPosts.id).to.be.a('number')\r",
+              "    pm.expect(ListPosts.title).to.be.a('string').not.be.empty\r",
+              "    pm.expect(ListPosts.body).to.be.a('string').not.be.empty\r",
+              "})\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "32da6e40-9d33-4792-a1f6-49bbeec7632c",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "d6a21e9a-021f-46bb-85db-22d129b793eb",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Post 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a4b081d2-a331-484e-964d-d564a0a5a99f",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body matches string\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"qui est esse\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Assert userId = 1\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.userId).to.eql(1);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test('Get Posts 2 is an Object{}',()=>{\r",
+              "    pm.expect(data).to.be.an('Object'); // data is Object, true\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "e4b97c9a-a4dd-4118-b03f-6f2e5fed1ddc",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "348ef6d6-ec2d-4241-a294-5cf31ae7be5e",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts/2",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Detail Post ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "39f64407-f6a0-4d76-a02e-0b5c92128a38",
+            "exec": [
+              "pm.test(\"Body matches string\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"3\");\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test('Detail Post Id is an Object{}',()=>{\r",
+              "    pm.expect(data).to.be.an('Object'); // data is Object, true\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b13a4ae6-dd5e-49b5-ac7b-361143edd394",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "edeff4d3-d3f9-42c3-a3f6-bccc18a55127",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts/:ID",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts",
+            ":ID"
+          ],
+          "variable": [
+            {
+              "key": "ID",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Comment With PostId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7460dc21-283f-4e7f-8640-aa32e116ea99",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.be.an('array');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"All items have postId = 1\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    jsonData.forEach(item => {\r",
+              "        pm.expect(item.postId).to.eql(1);\r",
+              "    });\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Item count = 5\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.length).to.eql(5);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "1ae38148-9d0b-4b2c-87dd-844b73bbb96b",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "ab9667bc-9014-4349-90e9-11abd3d0781d",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/comments?postId=1",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "postId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Comment WIth Email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4f7c656a-dd6c-43cf-a37c-4c6a7e8a7270",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Body matches string\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"Nikita@garfield.biz\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Assert Email\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].email).to.eql(\"Nikita@garfield.biz\");\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test('List Users is an Array', () => {\r",
+              "    pm.expect(data).to.be.an('array'); // data is Object, true\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "7ff4d0a8-faa3-473a-92cb-6ac0b1521f4c",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "ebe73858-5542-4c89-921b-f5d772589597",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/comments?email=Nikita@garfield.biz",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "Nikita@garfield.biz"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Comment With Id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "73b2f501-aacb-451a-a365-edae261dd4ba",
+            "exec": [
+              "pm.test(\"Assert ID = 4\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].id).to.eql(4);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "af5c3b0e-9ade-4ee8-a65f-d6f9a4276c8d",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "a691209d-dea7-4a48-97c4-3d7f535cb807",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/comments?id=4",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get List Album",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "71bb70da-2378-4cfc-9c25-b61bc59bd6c4",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "// pm.test(\"Response is an array\", function () {\r",
+              "//     const jsonData = pm.response.json();\r",
+              "//     pm.expect(jsonData).to.be.an('array');\r",
+              "// });\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test('List Albums is an array[]',()=>{\r",
+              "    pm.expect(data).to.be.an('array');\r",
+              "})\r",
+              "\r",
+              "pm.test('List Albums required userId,id,title',()=>{\r",
+              "    const ListAlbums = data[0]\r",
+              "    pm.expect(ListAlbums.userId).to.be.a('number')\r",
+              "    pm.expect(ListAlbums.id).to.be.a('number')\r",
+              "    pm.expect(ListAlbums.title).to.be.a('string').and.not.be.empty\r",
+              "})\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "6ceca75e-1443-4510-83c0-fe1f3946fbe3",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "36bd85e4-7221-434e-a77e-265dcfb91d51",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/albums",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "albums"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List User With Fillter Not Found",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "9f9e66e9-306f-4f71-98b9-e3b175a987d0",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "4877e215-d0db-46bd-972e-56d67b2f50aa",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "7accc01e-3c86-496d-88b4-7abc33dbabf0",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users?name=wildan",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "wildan"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List User With 1 Item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "99edcca6-5203-48dc-a2f3-6fbd019af72e",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "ee751802-2886-4af2-9907-c278df7ca0ce",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "f99456b5-e475-4fc1-a253-e7166e95d6ea",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users?phone=010-692-6593 x09125",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "phone",
+              "value": "010-692-6593 x09125"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List User With Multiple Item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a95bb1d3-3102-4dc1-be37-1026711e3f37",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "e63a252f-cfdd-431a-83e4-4b62dc0dded4",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "960e7571-d977-4889-82d5-2d1f4fdba813",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users?email=Julianne.OConner@kory.org&city=South Elvis",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "Julianne.OConner@kory.org"
+            },
+            {
+              "key": "city",
+              "value": "South Elvis"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Post With Fillter Not Found",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "b3acdbc5-bc13-488a-81c0-afcdf80f9b21",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "8ae2f641-f01d-4b16-886a-8fc9cf668444",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "d71fd629-c82a-4a93-8bd6-8f64a1970434",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts?userId=200",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "200"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Post With 1 Item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "55862ed0-7581-4396-9ed7-2d669681dee2",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "ebca89ce-b20e-4a02-8dfe-4ca7173775fc",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "fa56a7fe-44f1-483b-a39b-41346bb07fa6",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts?id=6",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "6"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Post With Multiple Item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ffa4ab03-cb7e-4c5d-b0e4-964c190eb0e9",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "9c876c70-a043-497a-8758-59c61d6985b2",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "a0cb215c-7aad-4a76-80e9-b13ea78bf22f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts?userId=1",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get List Comment",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e4ddfcfe-9ffa-49b7-a64e-cc223250a831",
+            "exec": [
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test(\"List Comment is an Array\",()=>{\r",
+              "    pm.expect(data).to.be.an('array');\r",
+              "})\r",
+              "\r",
+              "pm.test(\"List Comments required id,name,email\",()=>{\r",
+              "    const ListComments = data[2]\r",
+              "\r",
+              "    pm.expect(ListComments.id).to.be.a('number')\r",
+              "    pm.expect(ListComments.name).to.be.a('string').and.not.be.empty\r",
+              "    pm.expect(ListComments.email).to.be.a('string').and.not.be.empty\r",
+              "\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "83fdef8a-7b0a-4e7e-964e-945c81414243",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "008e2417-3e78-4506-9222-f79b4a595eef",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/comments",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Comments With Fillter Not Found",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "48822376-dbf4-49b3-b663-137176673e91",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b725c597-2e39-4910-a6be-65f5dfd2251e",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "70c02938-7333-4062-8a3d-71c057a5ba61",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/comments?body=ZeaGTluke",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "body",
+              "value": "ZeaGTluke"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Comment With Multiple Item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "fe966fbf-0d2d-4c2d-be68-605693018c07",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "2f23a6b1-6264-4cfd-a524-c25c352005de",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "4ecda88b-0701-4e07-b91e-4c9a7f7d1117",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/comments?postId=2",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "postId",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Album With UserId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c4e91bce-87ef-4b44-a059-abdcd1c9b79e",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is an array\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.be.an('array');\r",
+              "});\r",
+              "\r",
+              "pm.test(\"All items have userId = 2\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    jsonData.forEach(item => {\r",
+              "        pm.expect(item.userId).to.eql(2);\r",
+              "    });\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "16b57b05-7e64-44d6-8dd1-61c60854ee73",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "711150c8-af75-43b2-956c-f3f75362fa7f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/albums?userId=2",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "albums"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Album With Id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "afd8b423-a4ee-4038-88c5-74d5bc9287b7",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Id = 27\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    jsonData.forEach(item => {\r",
+              "        pm.expect(item.id).to.eql(27);\r",
+              "    });\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "32a61aa8-f8b8-49c0-a1bd-467f961366a4",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "2c7e5db1-3d9e-4943-ba4f-cdffc6c859de",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/albums?id=27",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "albums"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "27"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Album With Title",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4f41cd2a-6008-466e-8ff2-86a075ca05c4",
+            "exec": [
+              "pm.test(\"Tittle Corectly\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    jsonData.forEach(item => {\r",
+              "        pm.expect(item.title).to.eql('nihil cupiditate voluptate neque');\r",
+              "    });\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "3be4ae51-4ff3-4bce-8c27-b17a301a8844",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "3967cbac-d21a-417f-890e-7855fe93be8f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/albums?title=nihil cupiditate voluptate neque",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "albums"
+          ],
+          "query": [
+            {
+              "key": "title",
+              "value": "nihil cupiditate voluptate neque"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Album Wiith Fillter Not Found",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "77fb6b2e-d9fd-4772-b94d-c38d6aaac944",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "7bfda0c9-ad47-439e-ac34-5dce323d44e2",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "9007da77-11a3-4106-93fa-5c48c84ae0ad",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/albums?id=101",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "albums"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "101"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get List Todos",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8217a0d4-af89-469d-90f5-bcc04ee97caa",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "\r",
+              "pm.test(\"Get List Todos is an Array\",()=>{\r",
+              "    pm.expect(data).to.be.an('array')\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Get ListTodos required userId, title,completed\", ()=>{\r",
+              "    const ListTodos = data[0]\r",
+              "    pm.expect(ListTodos).to.have.property('userId').to.be.a('number')\r",
+              "    pm.expect(ListTodos).to.have.property('id').to.be.a('number')\r",
+              "    pm.expect(ListTodos).to.have.property('title').to.be.a('string')\r",
+              "    pm.expect(ListTodos).to.have.property('completed').that.is.a('boolean');\r",
+              "\r",
+              "\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "9ed9b09e-eb6f-4a89-a795-c5dc0935ad8c",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "6e233115-2239-4600-a028-7f6139d03514",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/todos",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "todos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Todos With Fillter Not Found",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "60f2cbae-2069-4e30-9bd3-0726bb149618",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5a07531b-6577-4e63-8f3d-1c1c64f36430",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "99ff4bff-7d33-4e35-91de-2ff6dd520ec0",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/todos?userId=99",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "todos"
+          ],
+          "query": [
+            {
+              "key": "userId",
+              "value": "99"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "list Todos With 1 item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "0edf962d-ed67-4a61-871d-37ded841227d",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "7b15aafb-d0b2-43ac-89b6-b3b24852358f",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "a5c1b492-d80e-4751-bbe5-ad8de8d1ec9f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/todos?id=10",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "todos"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "list Todos With Multiple Item",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "3b77debf-e24e-4831-9ed3-6ac6356c057e",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const data = pm.response.json();\r",
+              "console.log('>> data', data.length)\r",
+              "if (data.length === 0){\r",
+              "    pm.test('Filter: Not Found',()=>{\r",
+              "        pm.expect(data.length).to.eql(0); // No Item\r",
+              "    })\r",
+              "}else if (data.length === 1){\r",
+              "    pm.test('Filter: 1 item',()=>{\r",
+              "        pm.expect(data.length).to.eql(1); // 1 item\r",
+              "    })\r",
+              "}else if (data.length > 1 ){\r",
+              "    pm.test('Filter: Multiple Item',()=>{\r",
+              "        pm.expect(data.length).to.greaterThan(1); //Item Lebih dari 1\r",
+              "    })\r",
+              "}else {\r",
+              "    console.log('not handle....')\r",
+              "}\r",
+              "console.log('>> data', data.length)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "79dde2fa-b7c8-4389-b4ac-314c79489af0",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "f6f200df-c285-4497-8ca0-efa89402cee5",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/todos?completed=false",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "todos"
+          ],
+          "query": [
+            {
+              "key": "completed",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Creating Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8c6294f4-bf72-40bc-88af-40726dc6292f",
+            "exec": [
+              "pm.test(\"Verify New title is Tambah Post\",()=>{\r",
+              "    pm.expect(pm.response.json().title).to.eql(\"Tambah Post\")\r",
+              "})\r",
+              "pm.test(\"Status code is 201\", function () {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "0e9a096f-ef56-42c7-8404-4a34d36a27dd",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "b62958b4-cc81-45d1-b1be-78491cd4e3ac",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{{JSON_CREATING_POST}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/posts",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edit Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "30fb466f-5468-43db-bb65-d02105878192",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Request body is correct\", () => {\r",
+              "    const rawBody = pm.request.body.raw;\r",
+              "    const req = JSON.parse(rawBody);\r",
+              "\r",
+              "    pm.expect(req.title).to.eql(\"Updated Title\");\r",
+              "    pm.expect(req.body).to.eql(\"Updated Content\");\r",
+              "    pm.expect(req.userId).to.eql(1);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "72b76dea-3715-46af-ab51-369e2d9ab97a",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "5654489e-45ee-4c7a-808e-af98f41ed376",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Updated Title\",\r\n  \"body\": \"Updated Content\",\r\n  \"userId\": 1\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/posts/1",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Patch Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c50801ae-0ac1-4bcc-af34-ef6f796b1085",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"New ID is 101\",()=>{\r",
+              "    pm.expect(pm.response.json().id).to.eql(101);\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "3dbd7234-90d9-4469-b7c2-e2bf7634828a",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "e51ad53c-cfc2-4b21-bb28-af15a1c32878",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 101\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/posts/1",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "008bf95a-77bb-4897-9480-cc551f0d36d7",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "021eb76a-df9a-4500-96aa-edb7d605d47c",
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "344b81ff-abd0-4329-91d9-83c01fda65cc",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/posts/1",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

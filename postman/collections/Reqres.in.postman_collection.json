@@ -1,0 +1,215 @@
+{
+  "info": {
+    "_postman_id": "648f95c5-8006-4699-b599-1fa748f07875",
+    "name": "Reqres.in",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get List User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c82543b9-898b-488a-9701-bb45a62d37d4",
+            "exec": [
+              "const responseJSON = pm.response.json();\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Assert Page 2\", () => {\r",
+              "    pm.expect(responseJSON.page).to.eql(2);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "df5b8d1c-42d8-4deb-a52e-65bd58ccd278",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres-free-v1",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{URL}}/api/users?page=2",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edit User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "87364db2-0394-4835-a5d3-515e677c12ac",
+            "exec": [
+              "const responseJSON = pm.response.json();\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Assert Name Is Wildan Update yaa\", () => {\r",
+              "    pm.expect(responseJSON.name).to.eql(\"Wildan Update yaa\");\r",
+              "    pm.expect(responseJSON.job).to.eql(\"Mancing\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "38a3dc9b-8a42-4e2a-8b9d-7c5fe2d7b232",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres-free-v1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{JSON_UPDATE_USER}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/api/users/2",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "aede01e9-bec7-4fca-8ac3-a01705f08b7d",
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "a5688816-4647-49df-b3d2-58ef8b931c6b",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres-free-v1",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{URL}}/api/users/2",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "613a5cfe-a44c-452c-8d5f-6765dda721dd",
+            "exec": [
+              "pm.test(\"Assert Name is Wildannn\", () => {\r",
+              "    const responseJSON = pm.response.json();\r",
+              "    pm.expect(responseJSON.name).to.eql(\"Wildannn\");\r",
+              "});\r",
+              "pm.test(\"Successful POST request\", function () {\r",
+              "    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "8a64f04e-1981-44fe-a124-38125052335d",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "reqres-free-v1",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{JSON_CREATING_USER}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/api/users",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "info": {
+    "_postman_id": "729c07ad-b075-41d9-8b9e-da8c41da7003",
+    "name": "Todoist",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create New Project",
+      "id": "ab3380a3-3370-4faf-8933-fb19de1fb992",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Shopping List\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.todoist.com/rest/v1/projects",
+          "protocol": "https",
+          "host": [
+            "api",
+            "todoist",
+            "com"
+          ],
+          "path": [
+            "rest",
+            "v1",
+            "projects"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Migrate Personal Token",
+      "id": "ce82cb01-ace2-4671-b40d-1480af8e9602",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
